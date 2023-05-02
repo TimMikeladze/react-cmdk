@@ -27,6 +27,7 @@ interface CommandPaletteProps {
   isOpen: boolean;
   search: string;
   page?: string;
+  commandPaletteContentClassName?: string;
 }
 
 function CommandPalette({
@@ -41,6 +42,7 @@ function CommandPalette({
   footer,
   search,
   page,
+  commandPaletteContentClassName,
 }: CommandPaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -159,7 +161,15 @@ function CommandPalette({
             onChangeOpen(false);
           }}
         >
-          <div className="command-palette-content antialiased">
+          <div
+            className={[
+              `command-palette-content`,
+              `antialiased`,
+              commandPaletteContentClassName,
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
