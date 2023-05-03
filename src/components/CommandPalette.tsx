@@ -1,5 +1,4 @@
 import FreeSearchAction from "./FreeSearchAction";
-import Icon from "./Icon";
 import List from "./List";
 import ListItem from "./ListItem";
 import Page from "./Page";
@@ -28,6 +27,11 @@ interface CommandPaletteProps {
   search: string;
   page?: string;
   commandPaletteContentClassName?: string;
+  icons?: {
+    searchIcon?: ReactNode;
+    clearIcon?: ReactNode;
+    freeSearchIcon?: ReactNode;
+  }
 }
 
 function CommandPalette({
@@ -43,6 +47,7 @@ function CommandPalette({
   search,
   page,
   commandPaletteContentClassName,
+  icons,
 }: CommandPaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -207,6 +212,13 @@ function CommandPalette({
                         prefix={searchPrefix}
                         value={search}
                         ref={inputRef}
+                        searchIcon={
+                          icons?.searchIcon
+                        }
+                        clearIcon={
+                          icons?.clearIcon
+                        }
+
                       />
                     </PageContext.Provider>
 
@@ -246,7 +258,6 @@ function CommandPalette({
 CommandPalette.Page = Page;
 CommandPalette.List = List;
 CommandPalette.ListItem = ListItem;
-CommandPalette.Icon = Icon;
 CommandPalette.FreeSearchAction = FreeSearchAction;
 
 export default CommandPalette;
