@@ -28,6 +28,7 @@ interface CommandPaletteProps {
   search: string;
   page?: string;
   commandPaletteContentClassName?: string;
+  autoFocus?: boolean;
 }
 
 function CommandPalette({
@@ -43,6 +44,7 @@ function CommandPalette({
   search,
   page,
   commandPaletteContentClassName,
+  autoFocus,
 }: CommandPaletteProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -207,6 +209,7 @@ function CommandPalette({
                         prefix={searchPrefix}
                         value={search}
                         ref={inputRef}
+                        autoFocus={autoFocus}
                       />
                     </PageContext.Provider>
 

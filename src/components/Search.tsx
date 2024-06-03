@@ -7,10 +7,11 @@ interface SearchProps {
   placeholder?: string;
   prefix?: string[];
   value: string;
+  autoFocus?: boolean;
 }
 
 function Search(
-  { onChange, placeholder, prefix, value }: SearchProps,
+  { onChange, placeholder, prefix, value, autoFocus }: SearchProps,
   ref: Ref<HTMLInputElement>
 ) {
   return (
@@ -50,7 +51,7 @@ function Search(
           placeholder={placeholder}
           value={value}
           type="text"
-          autoFocus
+          autoFocus={autoFocus}
         />
 
         {value && (
